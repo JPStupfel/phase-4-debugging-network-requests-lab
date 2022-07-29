@@ -63,11 +63,30 @@ developing your own process.
 - Add a new toy when the toy form is submitted
 
   - How I debugged:
+    Dev console: got 500 internal server error upon post request.
+
+  Ruby console: got NameError (uninitialized constant ToysController::Toys):
+
+  Rails logs: app/controllers/toys_controller.rb:10:in `create'
+
+  set Byebug in controller. Noticed Toys should be Toy. fixed the typo.
 
 - Update the number of likes for a toy
 
   - How I debugged:
 
+  from client: Unhandled Rejection (SyntaxError): Unexpected end of JSON input
+
+  problem must be between patch request and server to update likes in db.
+
+  clicking the like button is updating the database but crashing the page...must not be getting json as response.
+
+  rendered json in toys_controller#update
+
 - Donate a toy to Goodwill (and delete it from our database)
 
   - How I debugged:
+
+  client: Failed to load resource: the server responded with a status of 404 (Not Found)
+
+  added destroy to routes
